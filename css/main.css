@@ -1,6 +1,33 @@
+* {
+	padding: 0px;
+	margin: 0px;	
+}
+
+html {
+	background-color: #383838;
+}
+
+html, body {
+	font-family: 'Biryani', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
 .tile {
-	height: 100px;
-	width: 100px;
-	background: #20b9df;
-	display: inline-block;
+	height: 150px;
+	width: 600px;
+	font-size: 60px;
+	font-weight: 800;
+	text-transform: uppercase;
+	line-height: 46px;
+	padding: 20px 10px;
+	background-color: #51aec5;	
+	color: #ffc1ea;
+	margin: 0 auto;
+}
+
+.active {
+	background-color: #c93098;
 }
