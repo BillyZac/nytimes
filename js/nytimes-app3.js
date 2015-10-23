@@ -2,13 +2,12 @@ $( document ).ready(function() {
 
 var globalData;
 
-
 // Style
 $(".tile").hover(function() {
       $( this ).toggleClass( "active" )
     });
-   
-$( "div:even" ).css( "background-color", "#bbf" );    
+
+// $( "div:even" ).css( "background-color", "#bbf" );
 
 // Global layout variables
 var $tileContainer = $('#tile-container');
@@ -23,9 +22,9 @@ var appKey = "9d1a3ce50892530fe2b12b67ba93be86:17:72349747";
 
 for (var pageNum = 0; pageNum<5; pageNum++) {
 var dataURI = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?callback=svc_search_v2_articlesearch&page=' + pageNum + '&api-key=9d1a3ce50892530fe2b12b67ba93be86:17:72349747';
-	
+
 $.getJSON(dataURI, function (data){
-	globalData = data.response.docs;				
+	globalData = data.response.docs;
 	$.each(data.response.docs, function(i, item){
 		var article = item.lead_paragraph.substring(0, 30);
 
@@ -33,7 +32,7 @@ $.getJSON(dataURI, function (data){
 		var linkHTML = '<a href="';
 			linkHTML += item.web_url;
 			linkHTML += '">';
-		
+
 		var innerHTML = '<div class="tile" id="tile-'; // Open the tile div
 			innerHTML += i; // Give tile a numbered id
 			innerHTML += '">'
@@ -47,7 +46,3 @@ $.getJSON(dataURI, function (data){
 }; //end pageNum for loop
 
 }) // end document ready
-
-
-	
-
