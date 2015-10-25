@@ -32,7 +32,7 @@ $.getJSON(dataURI, function (data){
 	globalData = data.response.docs;
 	$.each(data.response.docs, function(i, item){
     if (articleNotEmpty(item)) {
-      var headline = item.headline.name;
+      var headline = item.headline.main;
   		var article = item.lead_paragraph;
       console.log(articleNotEmpty(item), headline, article);
       console.log();
@@ -57,5 +57,5 @@ $.getJSON(dataURI, function (data){
 }; //end pageNum for loop
 
 function articleNotEmpty (item) {
-  return (item.headline.name != undefined && item.lead_paragraph != '');
+  return (item.document_type == 'article' && item.headline.main != undefined && item.lead_paragraph != '');
 }
