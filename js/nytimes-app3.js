@@ -31,24 +31,31 @@ var dataURI = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?callback=
 $.getJSON(dataURI, function (data){
 	globalData = data.response.docs;
 	$.each(data.response.docs, function(i, item){
-    var headline = item.headline.name;
-    console.log(headline);
-		var article = item.lead_paragraph;
+    if (articleNotEmpty(item)) {
+      var headline = item.headline.name;
+  		var article = item.lead_paragraph;
+      console.log(articleNotEmpty(item), headline, article);
+      console.log();
 
-		// Create link tile to original article
-		var linkHTML = '<a href="';
-			linkHTML += item.web_url;
-			linkHTML += '">';
+  		// Create link tile to original article
+  		var linkHTML = '<a href="';
+  			linkHTML += item.web_url;
+  			linkHTML += '">';
 
-		var innerHTML = '<div class="tile" id="tile-'; // Open the tile div
-			innerHTML += i; // Give tile a numbered id
-			innerHTML += '">';
-      innerHTML += '<h1>' + headline + '</h1>';
-			innerHTML += article;
-			innerHTML += '</div>'; // Close the tile div
-		$tileContainer.append( linkHTML + innerHTML + '</a>'); // Put the tile div on the page
+  		var innerHTML = '<div class="tile" id="tile-'; // Open the tile div
+  			innerHTML += i; // Give tile a numbered id
+  			innerHTML += '">';
+        innerHTML += '<h1>' + headline + '</h1>';
+  			innerHTML += article;
+  			innerHTML += '</div>'; // Close the tile div
+  		$tileContainer.append( linkHTML + innerHTML + '</a>'); // Put the tile div on the page
 
-		tileNum++;
+  		tileNum++;
+    }
 	}); // end each
 }); // end getJSON
 }; //end pageNum for loop
+
+function articleNotEmpty (item) {
+  return (item.headline.name != undefined && item.lead_paragraph != '');
+}
