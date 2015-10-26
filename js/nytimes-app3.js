@@ -46,7 +46,7 @@ $.getJSON(dataURI, function (data){
   			innerHTML += i; // Give tile a numbered id
   			innerHTML += '">';
         innerHTML += '<h1>' + headline + '</h1>';
-  			innerHTML += article;
+  			innerHTML += '<p>' + article + '</p>';
   			innerHTML += '</div>'; // Close the tile div
   		$tileContainer.append( linkHTML + innerHTML + '</a>'); // Put the tile div on the page
 
