@@ -15,13 +15,17 @@ a {
 	height: 150px;
 	width: 600px;
 	margin: 10px auto;
-	padding: 20px 10px;
+	padding: 20px;
 
 	font-size: 12px;
 	font-weight: 400;
 
-	background-color: #000;
+	background-color: #333;
 	color: #fff;
+}
+
+.tile h1 {
+	line-height: 2rem;
 }
 
 /*.active {
